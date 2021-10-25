@@ -1,0 +1,35 @@
+<html>
+    <title> Home Page</title>
+    <body>
+
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+            {% endfor %}
+
+        {% endif %}
+
+        <h1> welcome to Blogs </h1>
+        {% if user.is_authenticated %}
+            <h2> user : {{user.first_name}} {{user.last_name}}</h2>
+
+            <form method="POST" action = {% url 'accounts:logout' %}>
+                {%csrf_token%}
+                <input type="submit" value="logout"> 
+            </form>
+
+            <h4> Want to post blogs of your own.....? Request blogger access <a href = {% url 'accounts:bloggerAccess' %}> here </a></h4>
+        {% else %}
+            <h3> <a href = {% url 'accounts:login' %}> Login </a> </h3> 
+            <h3> <a href = {% url 'accounts:signup' %}> Signup </a> </h3>
+        {% endif %}
+            <h3> <a href = {% url 'blogs:update' %}> Create a new Blog </a> </h3>
+        <ul>
+            {% for item in blogList%}
+                <li> <a href = "/blog/{{item.id}}"> {{item.title}}</a> </li>
+            {% endfor %}
+        </ul>
+
+    </body>
+</html>

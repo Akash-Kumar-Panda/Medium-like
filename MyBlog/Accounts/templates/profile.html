@@ -1,0 +1,15 @@
+<html> 
+    <title> Profile </title>
+    <body>
+
+    <h2> Name : {{blogger.first_name}} {{blogger.last_name}}</h2>
+    <h3> Email : {{ blogger.email}} </h3>
+    <h3> Company : {{bloggerData.company}} </h3>
+    <h3> Designation : {{bloggerData.designation}} </h3>
+    <h3> About : {{bloggerData.about}} </h3>
+
+
+    <h4><a href="{% url 'list' %}"> HomePage </a></h4>
+
+    </body>
+</html>

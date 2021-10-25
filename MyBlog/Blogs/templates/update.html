@@ -1,0 +1,28 @@
+<html>
+    <title> update page </title>
+
+    <body> 
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+            {% endfor %}
+
+        {% endif %}
+
+        <h2> hello {{user.first_name}} {{user.last_name}}</h2>
+        <h3> {{message}}</h3>
+        {% comment %} {% if id %}:
+
+        {%endif%} {% endcomment %}
+        {% comment %} <img src="{{blog.thumbNail.url}}/" width ="1000" height ="500"> {% endcomment %}
+
+        <form method = 'POST' enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+            <input type = "submit" > </input>
+        </form>
+        <a href="{% url 'list' %}"> HomePage </a>
+    </body>
+
+</html>
